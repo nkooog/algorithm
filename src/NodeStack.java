@@ -48,6 +48,7 @@ public class NodeStack {
         node.push("두번째");
         node.push("세번째");
 
+//        node.pop();
 
         node.printStack();
 
