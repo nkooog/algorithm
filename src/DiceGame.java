@@ -1,10 +1,5 @@
-import com.sun.xml.internal.bind.v2.TODO;
-
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Iterator;
 
 public class DiceGame {
 
@@ -14,27 +9,29 @@ public class DiceGame {
 			2.같은 눈이 2개만 나오는 경우에는 1,000원+(같은 눈)×100원의 상금을 받게 된다.
 			3.모두 다른 눈이 나오는 경우에는 (그 중 가장 큰 눈)×100원의 상금을 받게 된다.
 		*/
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			Integer value1 = Integer.parseInt(reader.readLine());
+			Integer value2 = Integer.parseInt(reader.readLine());
+			Integer value3 = Integer.parseInt(reader.readLine());
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		int value1 = Integer.parseInt(reader.readLine());
-		int value2 = Integer.parseInt(reader.readLine());
-		int value3 = Integer.parseInt(reader.readLine());
-
-		getBonus(value1,value2,value3);
-		getBonus(value1,value2);
-
-	}
-
-	public static int getBonus(int ... param) {
-
-		HashSet<Integer> hashSet = new HashSet<>();
-
-		for(int value : param) {
-//			hashSet.add(value);
-			System.out.print(value);
+			if(value1 == value2 && value1 == value3) {
+				System.out.println( 10000 + (value1) * 1000 );
+			}else if( (value1 == value2 && value1 != value3) || (value1 == value3 && value1 != value2)) {
+				System.out.println( 1000 + (value1) * 100 );
+			}else if( value2 == value3 && value2 != value1) {
+				System.out.println( 1000 + (value2) * 100 );
+			}else {
+				Integer max = value1;
+				if( max < value2) max = value2;
+				if( max < value3) max = value3;
+				System.out.println( max * 100);
+			}
+		}catch (NumberFormatException e) {
+			System.out.println("정수만 입력하세요");
 		}
-		System.out.println();
-		return 0;
+
+
 	}
 
 }
