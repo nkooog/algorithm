@@ -32,15 +32,8 @@ public class Ex_1253 {
 
 			while(left < right) {
 				if(arr[left] + arr[right] == find) {
-					if( left != right && right != left) {
-						count++; left++; right--;
-						break;
-					}else if(left == right) {
-						left++;
-					}else{
-						right--;
-					}
-
+					count++; left++; right--;
+					break;
 				}else if(arr[left] + arr[right] < find) {
 					left++;
 				}else{
