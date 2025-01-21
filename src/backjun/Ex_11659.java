@@ -31,6 +31,7 @@ public class Ex_11659 {
 			System.out.println(arr[end] - arr[start - 1]);
 
 		}
+		System.out.println();
 
 	}
 
