@@ -37,18 +37,18 @@ public class ex_5430 {
 	public static String xx(String func) {
 
 		int isValid = 0;
-
+		boolean isErr = false;
 		for(int i=0; i<func.length(); i++) {
 			char c = func.charAt(i);
-
-			if(q.isEmpty()) {
-				builder.append("error");
-				break;
-			}
-
 			if(c == 'R'){
 				isValid++;
 			}else{
+
+				if(q.isEmpty()) {
+					isErr = true;
+					break;
+				}
+
 				if(isValid % 2 == 0) {
 					q.poll();
 				}else{
@@ -57,18 +57,20 @@ public class ex_5430 {
 			}
 		}
 
-		if(!q.isEmpty()) {
-			builder.append("[");
-			while(!q.isEmpty()) {
-				builder.append(
-						isValid % 2 == 0 ? q.pop() : q.pollLast()
-				);
-				if(!q.isEmpty()) builder.append(",");
-			}
-			builder.append("]");
+		if(isErr) {
+			return builder.append("error\n").toString();
 		}
 
-		return builder.append("\n").toString();
+		builder.append("[");
+		while(!q.isEmpty()) {
+			builder.append(
+					isValid % 2 == 0 ? q.pop() : q.pollLast()
+			);
+			if(!q.isEmpty()) builder.append(",");
+		}
+
+
+		return builder.append("]\n").toString();
 	}
 
 }
