@@ -13,6 +13,7 @@ public class hab {
 		int result = N * (N + 1) / 2;
 
 		System.out.println(result);
+		System.out.println(1/2);
 	}
 
 
