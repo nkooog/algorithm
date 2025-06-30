@@ -51,17 +51,13 @@ public class ex_1822 {
 	}
 
 	public static int[] getArrays(String s) {
-
 		StringTokenizer st = new StringTokenizer(s, " ");
-
 		int[] arr = new int[st.countTokens()];
-
 		int i=0;
 		while(st.hasMoreTokens()) {
 			arr[i] = Integer.parseInt(st.nextToken());
 			i++;
 		}
-
 		return arr;
 	}
 
